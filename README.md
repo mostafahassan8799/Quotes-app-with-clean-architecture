@@ -10,14 +10,20 @@
 
 ## Project Structure
 
-![Project Structure](layout\project structure.png)
+![Project Structure]
+
+<img src="layout/project structure.png" width="800">
 
 # Screen Shots
 
-![alt text](layout\scr1.png "Random Quote")
+![Random Quote]
+
+<img src="layout/scr1.png" width="800">
 --------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------
-![alt text](layout\scr2.png "Error")
+![Error]
+
+<img src="layout/scr2.png" width="800">
 --------------------------------------------------------------------------------------------------------------------------------
 
 # PROJECT LICENSE
