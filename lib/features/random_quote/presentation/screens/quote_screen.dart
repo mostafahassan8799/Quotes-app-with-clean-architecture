@@ -5,6 +5,8 @@ import 'package:clean_architecture/features/random_quote/presentation/cubit/rand
 import 'package:clean_architecture/features/random_quote/presentation/widgets/quote_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:clean_architecture/core/widget/error_widget.dart'
+    as error_widget;
 
 class QuoteScreen extends StatefulWidget {
   const QuoteScreen({super.key});
@@ -22,24 +24,9 @@ class _QuoteScreenState extends State<QuoteScreen> {
     _getRandomQuote();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    AppBar appBar = buildAppBar();
-    return RefreshIndicator(
-        child: Scaffold(appBar: appBar, body: _buildBodyContent()),
-        onRefresh: () => _getRandomQuote());
-  }
-
-  AppBar buildAppBar() {
-    final appBar = AppBar(
-      title: const Text(AppStrings.appName),
-    );
-    return appBar;
-  }
-
   Widget _buildBodyContent() {
     return BlocBuilder<RandomQuoteCubit, RandomQuoteState>(
-        builder: (context, state) {
+        builder: ((context, state) {
       if (state is RandomQuoteIsLoading) {
         return Center(
             child: SpinKitFadingCircle(
@@ -69,7 +56,7 @@ class _QuoteScreenState extends State<QuoteScreen> {
         );
       } else if (state is RandomQuoteFailure) {
         return const Center(
-          child: Text('Error'),
+          child: error_widget.ErrorWidget(),
         );
       } else {
         return Center(
@@ -77,6 +64,21 @@ class _QuoteScreenState extends State<QuoteScreen> {
           color: AppColors.primaryColor,
         ));
       }
-    });
+    }));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    AppBar appBar = buildAppBar();
+    return RefreshIndicator(
+        child: Scaffold(appBar: appBar, body: _buildBodyContent()),
+        onRefresh: () => _getRandomQuote());
+  }
+
+  AppBar buildAppBar() {
+    final appBar = AppBar(
+      title: const Text(AppStrings.appName),
+    );
+    return appBar;
   }
 }

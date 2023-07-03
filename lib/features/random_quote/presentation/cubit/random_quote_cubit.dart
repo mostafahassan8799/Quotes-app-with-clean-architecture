@@ -14,6 +14,7 @@ class RandomQuoteCubit extends Cubit<RandomQuoteState> {
   RandomQuoteCubit({required this.getRandomQuoteUsecase})
       : super(RandomQuoteInitial());
   Future<void> getRandomQuote() async {
+    emit(RandomQuoteIsLoading());
     Either<Failure, Quote> response = await getRandomQuoteUsecase(NoParams());
     emit(response.fold(
         (failure) => RandomQuoteFailure(message: _mapFailureToMsg(failure)),
