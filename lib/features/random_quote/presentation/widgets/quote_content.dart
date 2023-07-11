@@ -15,14 +15,9 @@ class QuoteContent extends StatelessWidget {
           borderRadius: BorderRadius.circular(30)),
       child: Column(
         children: [
-          Text(quote.content,
+          Text(quote.msg,
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyMedium),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 15),
-            child: Text(quote.author,
-                style: Theme.of(context).textTheme.bodyMedium),
-          )
         ],
       ),
     );
